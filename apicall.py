@@ -1,17 +1,23 @@
 import requests
+from datetime import date
 
-def currentWeather():
-    # This returns up to date current weather information
-    url = "https://weatherapi-com.p.rapidapi.com/current.json"
+url = "https://weatherapi-com.p.rapidapi.com/forecast.json"
 
-    querystring = {"q":"Providence"}
+city = input('Enter your city: ')
+days = input('How many days in advance do you want the weather for?: ')
+today = date.today()
 
-    headers = {
-        "X-RapidAPI-Key": "09d4e9e5cfmsh53cd4e0fd2d327ep1ec662jsnda2c540f8b14",
-        "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
-    }
+querystring = {"q":city,"days":days,"dt":today}
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
+headers = {
+	"X-RapidAPI-Key": "09d4e9e5cfmsh53cd4e0fd2d327ep1ec662jsnda2c540f8b14",
+	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+}
+#print(response.text)
 
-    return response.text
+#print(response['current']['temp_f'])
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+response = response.json()
+
 

@@ -1,6 +1,9 @@
 from apicall import *
 
-currentWeather()
+
+print(response['current']['temp_f'])
+
+
 
 
 
