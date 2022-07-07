@@ -9,3 +9,4 @@ CREATE TABLE catalog(
 
 INSERT INTO catalog(address, temp, date)
 VALUES ("Kennesaw", 65, 07-06-2022);
+SELECT * FROM catalog;
