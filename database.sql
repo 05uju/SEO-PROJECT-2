@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS weather_data;
-USE weather_data;
+CREATE DATABASE IF NOT EXISTS weather;
+USE weather;
 
 CREATE TABLE catalog(
     address VARCHAR(255) default NULL,
