@@ -4,7 +4,7 @@ import json
 import pprint
 import sqlalchemy as db
 import pandas as pd
-#from sqlalchemy import create_engine
+from sqlalchemy import create_engine
 
 # Create a dataframe to hold the api data
 col_names = ['City', 'Temperature', 'Dates']
@@ -28,21 +28,29 @@ headers = {
 # Convert the API data to a python dictionary
 response = requests.request("GET", url, headers=headers, params=querystring)
 dict_data = json.loads(response.text)
-pprint.pprint(dict_data)
 
-# df.loc[len(df.index)] = [city, dict_data['forecast']['forecastday'][0]['date'], temperature, ['forecast']['forecastday'][0]['day']['avgtemp_f'], dates,['forecast']['forecastday'][0]['day']['avgtemp_f']]
+# pprint.pprint(dict_data['location']['name'])
 
-# print(df)
-# pprint.pprint(dict_data)
+empty_list1 = []
+empty_list2 = []
+empty_list3 = []
 
 
-# Filter the dictionary data to move selected
+date = dict_data['forecast']['forecastday'][0]['date']
+avg_temp = dict_data['forecast']['forecastday'][0]['day']['avgtemp_f']
+location = dict_data['location']['name']
 
-# engine = db.create_engine('sqlite:///weather_data.db')
+empty_list1.append(date)
+empty_list2.append(avg_temp)
+empty_list3.append(location)
 
-# # query_result = engine.execute("SELECT * FROM table;").fetchall()
-# # print(pd.DataFrame(query_result))
+# Insert data into dataframe
+df = pd.DataFrame(list(zip(empty_list1, empty_list2,empty_list3)), columns= ['Date', 'Temperature', 'City'])
 
-# query_result = engine.execute("SELECT * FROM weather;").fetchall()
+#Create datahase and move the dataframe into a database
+engine = db.create_engine('sqlite:///weather_data.db')
+df.to_sql('weather', con=engine, if_exists='replace', index=False)
 
-# print(query_result)
+query_result = engine.execute("SELECT * FROM weather;").fetchall()
+
+print(query_result)
