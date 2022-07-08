@@ -6,4 +6,3 @@ CREATE TABLE IF NOT EXISTS weather (
     Temperature VARCHAR(255) default NULL,
     Dates DATE default NULL
 ) AUTO_INCREMENT=1;
-
