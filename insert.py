@@ -35,7 +35,6 @@ empty_list1 = []
 empty_list2 = []
 empty_list3 = []
 
-
 date = dict_data['forecast']['forecastday'][0]['date']
 avg_temp = dict_data['forecast']['forecastday'][0]['day']['avgtemp_f']
 location = dict_data['location']['name']

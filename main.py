@@ -20,7 +20,8 @@ elif(temp < 70):
     print("In", offset, "days it will be not too cold and not too hot. Jeans and a short sleeve should be perfect.")
 elif(temp < 80):
     print("Average temp:", temp)
-    print("In", offset, "days it's going to be moderately warm. Wear something breathable and full-coverage like jeans and a short sleeve." )
+    print("Date:", date)
+    print("In", offset, "days it's going to be moderately warm. Wear something comfortable like jeans and a short sleeve." )
 elif(temp < 90):
     print("Average temp:", temp)
     print("In", offset, "days it's going to be very warm! You should wear some shorts and a short sleeve")
