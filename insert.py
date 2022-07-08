@@ -12,7 +12,7 @@ df = pd.DataFrame(columns= col_names)
 
 # Get the user input
 city = input('Enter your city: ')
-offset = input('How many days in advance do you want the weather for?: ')
+offset = input('How many days from today do you want the forecast for?: ')
 date = datetime.date.today() + datetime.timedelta(days=int(offset))
 temperature = ''
 dates = ''
